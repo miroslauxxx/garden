@@ -1,4 +1,3 @@
-#conversion #character #malloc #libft_f #libft 
 ```
 char *ft_itoa(int n);
 ```
@@ -8,7 +7,7 @@ DESCRIPTION:
 RETURN VALUE:
 The string representing the integer. NULL if the allocation fails.
 
-
+#conversion #character #malloc #libft_f #libft 
 
 ```NOTES 
 something similar with putnbr

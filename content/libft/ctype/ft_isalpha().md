@@ -1,4 +1,3 @@
-#classification #character #ctype #libft
 ```
 #include <ctype.h>
 int ft_isalpha(int c);
@@ -10,6 +9,8 @@ In the standard **"C"** locale, it is equivalent to ([[ft_isupper()]] || [[
 
 RETURN VALUE:
 The values returned are nonzero if the character `c` falls into the tested class, and zero if not.
+
+#classification #character #ctype #libft
 
 ```
 

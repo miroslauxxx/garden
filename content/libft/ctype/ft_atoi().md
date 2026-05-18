@@ -1,4 +1,3 @@
-#conversion #character #stdlib #libft 
 ```
 #include <stdlib.h>
 int atoi(const char *nptr);
@@ -8,6 +7,8 @@ DESCRIPTION:
 
 RETURN VALUE:
 	The converted value or 0 on error.
+
+#conversion #character #stdlib #libft 
 
 ```NOTES 
 // Skip all standard whitespace characters

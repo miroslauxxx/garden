@@ -1,4 +1,3 @@
-#conversion  #character  #ctype #libft
 ```
 #include <ctype.h>
 int toupper(int c);
@@ -8,6 +7,8 @@ DESCRIPTION:
 
 RETURN VALUE:
 	The value returned is that of the converted letter, or _c_ if the conversion was not possible.
+
+#conversion  #character  #ctype #libft
 
 ```NOTES 
 

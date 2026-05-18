@@ -1,4 +1,3 @@
-#classification #character #ctype #libft
 ```
 #include <ctype.h>
 int ft_isascii(int c);
@@ -8,6 +7,8 @@ DESCRIPTION:
 
 RETURN VALUE:
 The values returned are nonzero if the character `c` falls into the tested class, and zero if not.
+
+#classification #character #ctype #libft
 
 ```NOTES 
 
