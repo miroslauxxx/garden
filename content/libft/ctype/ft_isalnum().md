@@ -15,6 +15,6 @@ RETURN VALUE:
 ``` 
 
 ```EDGE_CASES
-just compare all standard ascii results with non-ft alternative func. 
+>just compare all standard ascii results with non-ft alternative func. 
 ```
 MAN: https://man.archlinux.org/man/core/man-pages/isalnum.3.en

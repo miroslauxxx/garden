@@ -11,9 +11,8 @@ RETURN VALUE:
 #setting #zero #memory #strings #libft
 
 ```NOTES 
-// Why we are able to ignore return value of memset ?
-C allows to ignore any function's return value, bzero lets memset do the work
-and safely discards the pointer memset returns.
+>Why we are able to ignore return value of memset ?
+C-Lang allows to ignore any function's return value, bzero lets memset do the work and safely discards the pointer memset returns.
 ``` 
 
 ```EDGE_CASES

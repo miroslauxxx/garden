@@ -10,25 +10,22 @@ RETURN VALUE:
 
 #setting #memory #string #libft
 
-```NOTES 
-// Cast the void pointer to an unsigned char pointer to work byte-by-byte
-### Dereference a `void *` pointer because the compiler doesn't know how large
-the data type is
-
-// Cast the int to an unsigned char to isolate the lowest 8 bits
-// Loop through the memory and assign the value `n` times
+```NOTES
+>>unsigned char!
+>Cast the void pointer to an unsigned char pointer to work byte-by-byte
+>Cast the int to an unsigned char and loop through the memory and assign the value `n` times
 ``` 
 
 ```EDGE_CASES
-// n == 0
+> n == 0
 char str[10] = "Hello";
 ft_memset(str, 'X', 0);
 
-// filling non-char arrays
+> filling non-char arrays
 int arr[5]; 
 ft_memset(arr, 1, sizeof(arr)); // arr[0-4] will not equal 1. It will equal 16,843,009 each. It happens because an int is made of 4 bytes, the integer looks like 00000001 00000001 00000001 00000001 in binary. In decimal, that number is $16,843,009$.
 
-// character truncation
+> character truncation
 char str[5];
 ft_memset(str, 257, 4); // it will not crash because compiler converts the `int` to an `unsigned char`, so memory will be filled with ASCII 1 value (SOH)
 ```

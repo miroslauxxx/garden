@@ -11,22 +11,22 @@ RETURN VALUE:
 #conversion #character #stdlib #libft 
 
 ```NOTES 
-// Skip all standard whitespace characters
-// Handle a single optional '+' or '-' sign
-// Process digits and stop immediately at any non-numeric character
+>Skip all standard whitespace characters
+>Handle a single optional '+' or '-' sign
+>Process digits and stop immediately at any non-numeric character
 ``` 
 
 ```EDGE_CASES
-// normal 
+>normal 
 ft_atoi("42") 
 ft_atoi("-42") 
 
-// spaces and signs 
+>spaces and signs 
 ft_atoi(" +42") // return 42 
 ft_atoi(" --42") // Multiple signs, return 0
 ft_atoi("+-42") // Conflicting back-to-back signs, returns 0
 
-// non-numeric characters 
+>non-numeric characters 
 ft_atoi("42a73") // return 42
 ft_atoi("a42") // return 0
 ```

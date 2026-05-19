@@ -14,6 +14,7 @@ something similar with putnbr
 ``` 
 
 ```EDGE_CASES
+>normal
 ft_itoa(42) // "42"
 ft_itoa(-42) // "-42"
 ft_itoa(0) // "0"

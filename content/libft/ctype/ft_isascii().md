@@ -15,6 +15,6 @@ The values returned are nonzero if the character `c` falls into the tested cla
 ``` 
 
 ```EDGE_CASES
-just compare all standard ascii results with non-ft alternative func.
+>just compare all standard ascii results with non-ft alternative func.
 ```
 MAN: https://man.archlinux.org/man/core/man-pages/isascii.3.en

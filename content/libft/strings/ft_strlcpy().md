@@ -11,7 +11,9 @@ RETURN VALUE:
 #copy #string #libft 
 
 ```NOTES 
-
+> returns src_len anyway - if size == 0 or on success 
+> copying until iteration reach size length (src[i] && i < (size - 1))
+> setting last byte as '\0'
 ``` 
 
 ```EDGE_CASES
