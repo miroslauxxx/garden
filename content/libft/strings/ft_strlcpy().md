@@ -11,29 +11,25 @@ RETURN VALUE:
 #copy #string #libft 
 
 ```NOTES 
-> returns src_len anyway - if size == 0 or on success 
+> returns src_len anyway
 > copying until iteration reach size length (src[i] && i < (size - 1))
 > setting last byte as '\0'
 ``` 
 
 ```EDGE_CASES
-// normal
-char d[10] = "Hi"; 
-ft_strlcat(d, "There", 10)  // d becomes "HiThere", return 7
+>size too small
+char dst1[6] = "Hi";
+ft_strlcpy(dst1, "There", 4) == 5) // dst1 == "The"
 
-// truncation (buffer too small)
-char d[6] = "Hi";
-ft_strlcat(d, "There", 6)   // d becomes "HiThe\0", return 7
+>full copy
+char dst2[6] = "Hi";
+ft_strlcpy(dst2, "There", 6) == 5); // dst2 = "There"
 
-// buffer size smaller than original dest length
-char d[5] = "Hello";
-ft_strlcat(d, "World", 3)   // d stays "Hello", return 8.
+>size == 0
+char dst3[5] = "Hi";
+ft_strlcpy(dst3, "There", 0) == 5); dst3 = "Hi"
 
-// zero size buffer boundary
-char d[5] = "Hi";
-ft_strlcat(d, "There", 0)   // d stays "Hi", return 5
-
-// empty source string
-char d[5] = "Hi";
-ft_strlcat(d, "", 5)        // d stays "Hi", return 2
+>clear string as source
+char dst4[5] = "Hi";
+ft_strlcpy(dst4, "", 5) == 0); // dst4 = ""
 ```

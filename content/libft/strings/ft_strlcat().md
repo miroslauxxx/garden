@@ -11,7 +11,7 @@ RETURN VALUE:
 #concatenate #string #libft
 
 ```NOTES 
-> returns src_len + dst_len on success or src + size if dst_l == size 
+> returns src_len + dst_len on success or src_len + size if dst_len == size 
 > copying src[i] to dst[i + dst_l] until (src[i] && (dst_l + i + 1) < size)
 > setting i + dst_l (rest or at least one byte of dst) as '\0' 
 ``` 
