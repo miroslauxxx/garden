@@ -23,11 +23,11 @@ ft_memset(str, 'X', 0);
 
 > filling non-char arrays
 int arr[5]; 
-ft_memset(arr, 1, sizeof(arr)); // arr[0-4] will not equal 1. It will equal 16,843,009 each. It happens because an int is made of 4 bytes, the integer looks like 00000001 00000001 00000001 00000001 in binary. In decimal, that number is $16,843,009$.
+ft_memset(arr, 1, sizeof(arr)); // arr[0-4] will not equal 1. It will equal 16843009 each. It happens because an int is made of 4 bytes, the integer looks like 00000001 00000001 00000001 00000001 in binary. In decimal, that number is 16843009.
 
 > character truncation
 char str[5];
-ft_memset(str, 257, 4); // it will not crash because compiler converts the `int` to an `unsigned char`, so memory will be filled with ASCII 1 value (SOH)
+ft_memset(str, 289, 4); // it will not crash because compiler converts the `int` to an `unsigned char`, so memory will be filled with ASCII 33 value (!)
 ```
 SRC: https://github.com/openbsd/src/blob/master/lib/libc/string/memset.c
 
