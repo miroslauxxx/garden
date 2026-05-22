@@ -1,4 +1,4 @@
-```
+```c
 #include <string.h>
 size_t strlcat(char *dst, const char *src, size_t size);
 ```
@@ -8,7 +8,7 @@ DESCRIPTION:
 RETURN VALUE:
 	Initial length of dst plus the length of src.
 
-#concatenate #string #libft
+#concatenate #string #bsd #libft
 
 ```NOTES 
 > returns src_len + dst_len on success or src_len + size if dst_len == size 

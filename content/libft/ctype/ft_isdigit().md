@@ -1,4 +1,4 @@
-```
+```c
 #include <ctype.h>
 int ft_isdigit(int c);
 ```

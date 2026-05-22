@@ -1,4 +1,4 @@
-```
+```c
 #include <string.h>
 int strncmp(const char *s1, const char *s2, size_t n);
 ```
@@ -18,8 +18,10 @@ RETURN VALUE:
 > n == 0
 strncmp(s1, s2, 0);
 > passing one or two empty lines ("")
-
->
+strncmp("", "", 0);
+> last character difference
+strncmp("Hellq", "Hello", 5)
+strncmp("Hello", "Hell", 4));
 ```
 SRC: https://github.com/openbsd/src/blob/master/sys/lib/libkern/strncmp.c
 

@@ -1,4 +1,4 @@
-```
+```c
 #include <string.h>
 size_t strlcpy(char *dst, const char *src, size_t size);
 ```
@@ -8,7 +8,7 @@ DESCRIPTION:
 RETURN VALUE:
 	Length of src.
 
-#copy #string #libft 
+#copy #string #bsd #libft 
 
 ```NOTES 
 > returns src_len anyway

@@ -1,4 +1,4 @@
-```
+```c
 #include <string.h>
 char *strrchr(const char *s, int c);
 ```
@@ -12,8 +12,8 @@ RETURN VALUE:
 
 ```NOTES 
 > cast `int c` to unsigned char
-> iterate over string from end of string length until find occurance or reach index 0 of it. 
-> return pointer to first occurance in string if character found, or NULL if not found or character to find is '\0'
+> iterate over string from end until find occurance or reach index 0 
+> return pointer to first occurance from right in string if character found 
 ``` 
 
 ```EDGE_CASES

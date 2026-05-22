@@ -1,4 +1,4 @@
-```
+```c
 #include <stdlib.h>
 int atoi(const char *nptr);
 ```

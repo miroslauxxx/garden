@@ -1,4 +1,4 @@
-```
+```c
 char *ft_itoa(int n);
 ```
 DESCRIPTION:	

@@ -1,4 +1,4 @@
-```
+```c
 #include <ctype.h>
 int ft_isalpha(int c);
 ```
