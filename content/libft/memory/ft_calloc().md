@@ -32,5 +32,6 @@ void *ptr2 = ft_calloc(5, 0);  // Returns a valid unique pointer
 ft_calloc(SIZE_MAX, 2) // Multiplication overflows size_t. Safe check returns NULL.
 ```
 SRC: https://github.com/gcc-mirror/gcc/blob/master/libiberty/calloc.c
+SRC: https://github.com/kraj/uClibc/blob/master/libc/stdlib/malloc/calloc.c
 
 MAN: https://man.archlinux.org/man/calloc.3
