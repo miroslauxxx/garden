@@ -37,3 +37,6 @@ ft_strlcat(d, "There", 0) // d stays "Hi", return 5
 char d[5] = "Hi";
 ft_strlcat(d, "", 5) // d stays "Hi", return 2
 ```
+SRC:
+
+MAN:https://man.archlinux.org/man/strlcat.3bsd

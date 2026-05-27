@@ -32,6 +32,6 @@ ptr = strnstr(big, little, 8); // return pointer to big[5]
 const char *big = "Foo Bas Baz";
 ptr = strnstr(big, little, 4); // return NULL
 ```
-SRC: 
+SRC: https://github.com/lattera/freebsd/blob/master/lib/libc/string/strnstr.c
 
 MAN:

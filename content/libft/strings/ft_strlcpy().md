@@ -33,3 +33,9 @@ ft_strlcpy(dst3, "There", 0) == 5); dst3 = "Hi"
 char dst4[5] = "Hi";
 ft_strlcpy(dst4, "", 5) == 0); // dst4 = ""
 ```
+SRC: 
+https://github.com/OPCFoundation/UA-LDS/blob/master/strlcpy.c
+https://github.com/apple/darwin-xnu/blob/main/osfmk/arm/strlcpy.c
+
+MAN:
+https://linux.die.net/man/3/strlcpy
