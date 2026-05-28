@@ -14,6 +14,7 @@ RETURN VALUE:
 >Skip all standard whitespace characters
 >Handle a single optional '+' or '-' sign
 >Process digits and stop immediately at any non-numeric character
+>res = res * 10 + (*nptr - '0');
 ``` 
 
 ```EDGE_CASES

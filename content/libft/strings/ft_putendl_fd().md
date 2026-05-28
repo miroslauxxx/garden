@@ -1,13 +1,13 @@
 ```c
-#include
+void ft_putendl_fd(char *s, int fd)
 ```
 DESCRIPTION:	
-`C`
+`Outputs the string ’s’ to the specified file descriptor followed by a newline.`
 
 RETURN VALUE:
+`None`
 
-
-#c #c #libft
+#string  #print #nl #libft
 
 ```NOTES 
 

@@ -14,8 +14,7 @@ RETURN VALUE:
 #setting #memory #malloc #stdlib  #libft
 
 ```NOTES 
-//Prevent integer overflow during multiplication
-//If count or size is 0, standard calloc returns a unique pointer that can be freed. 
+//nmemb non null and size < size_t-1 / nmemb
 //Allocate memory 
 //Initialize the entire allocated memory block to zero
 ``` 

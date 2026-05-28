@@ -1,13 +1,13 @@
 ```c
-#include
+int ft_lstsize(t_list *lst);
 ```
 DESCRIPTION:	
-`C`
+`Counts the number of nodes in the list.`
 
 RETURN VALUE:
+`The length of the list`
 
-
-#c #c #libft
+#lists #iterate #countSize #libft
 
 ```NOTES 
 

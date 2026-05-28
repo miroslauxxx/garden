@@ -10,7 +10,10 @@ The string representing the integer. NULL if the allocation fails.
 #conversion #character #malloc #libft 
 
 ```NOTES 
-something similar with putnbr
+>get_num_len - n /= 10; len++;
+>MALLOC + close string 
+>if 0, if < 0, 
+>if > 0 str[--len] = (nbr % 10) + '0'; nbr /= 10; // --len means null at very end
 ``` 
 
 ```EDGE_CASES

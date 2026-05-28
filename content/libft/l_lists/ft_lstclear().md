@@ -1,13 +1,13 @@
 ```c
-#include
+void ft_lstclear(t_list **lst, void (*del)(void *));
 ```
 DESCRIPTION:	
-`C`
+`Deletes and frees the given node and all its successors, using the function ’del’ and free(3). Finally, set the pointer to the list to NULL.`
 
 RETURN VALUE:
+`None`
 
-
-#c #c #libft
+#lists #clear #free #libft
 
 ```NOTES 
 

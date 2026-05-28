@@ -1,13 +1,13 @@
 ```c
-#include
+t_list *ft_lstlast(t_list *lst);
 ```
 DESCRIPTION:	
-`C`
+`Returns the last node of the list.`
 
 RETURN VALUE:
+`Last node of the list`
 
-
-#c #c #libft
+#lists #last_node #libft
 
 ```NOTES 
 

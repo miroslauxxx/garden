@@ -21,3 +21,6 @@ ft_strdup("Hello")
 // empty string
 ft_strdup("")
 ```
+SRC: https://github.com/lattera/glibc/blob/master/string/strdup.c
+
+MAN: https://man.archlinux.org/man/strdup.3

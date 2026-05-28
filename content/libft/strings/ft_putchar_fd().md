@@ -1,13 +1,14 @@
 ```c
-#include
+#include <stdio.h>
+void ft_putchar_fd(char c, int fd);
 ```
 DESCRIPTION:	
-`C`
+`Outputs the character ’c’ to the specified file descriptor using write(2)`
 
 RETURN VALUE:
+`None`
 
-
-#c #c #libft
+#character #print #libft
 
 ```NOTES 
 
@@ -16,6 +17,6 @@ RETURN VALUE:
 ```EDGE_CASES
 
 ```
-SRC: 
+SRC: https://github.com/lattera/glibc/blob/master/libio/putchar.c
 
-MAN:
+MAN:https://man.archlinux.org/man/putchar.3

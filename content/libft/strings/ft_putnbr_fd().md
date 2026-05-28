@@ -1,13 +1,13 @@
 ```c
-#include
+void ft_putnbr_fd(int n, int fd);
 ```
 DESCRIPTION:	
-`C`
+`Outputs the integer ’n’ to the specified file descriptor.`
 
 RETURN VALUE:
+`None`
 
-
-#c #c #libft
+#number #print #libft
 
 ```NOTES 
 
