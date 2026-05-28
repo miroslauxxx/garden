@@ -8,7 +8,7 @@ DESCRIPTION:
 RETURN VALUE:
 	The converted value or 0 on error.
 
-#conversion #character #stdlib #libft 
+#conversion #string #integer #stdlib #libft 
 
 ```NOTES 
 >Skip all standard whitespace characters

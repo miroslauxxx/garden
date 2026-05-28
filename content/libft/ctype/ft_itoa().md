@@ -7,7 +7,7 @@ DESCRIPTION:
 RETURN VALUE:
 The string representing the integer. NULL if the allocation fails.
 
-#conversion #character #malloc #libft 
+#conversion #integer #string #malloc #libft 
 
 ```NOTES 
 >get_num_len - n /= 10; len++;
