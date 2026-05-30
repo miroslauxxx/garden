@@ -10,11 +10,7 @@ RETURN VALUE:
 #string #copy #malloc #libft
 
 ```C
-if (start >= s_len)
-	ft_strdup("");
-if (len > s_len - start)
-	len = s_len - start;
-// LEN + 1 FOR MALLOC
+two guards - one against start exactly at position of s_l, another to protect len of oversize by comparing it with s_l.
 ``` 
 
 ```EDGE_CASES

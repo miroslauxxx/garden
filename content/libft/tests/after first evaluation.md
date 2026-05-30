@@ -29,7 +29,7 @@ batch related to testing fd functions:
 ```
 
 ### Ftsplit how get next word remembers it's index
-`//////////////`
+`get_next_word(&s, c) - &s is the memory address of the variable s itself.`
 
 ### Think about detailed description
 `////////////////////////`
