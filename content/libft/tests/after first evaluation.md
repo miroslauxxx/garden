@@ -51,3 +51,5 @@ batch related to testing fd functions:
 
 
 ### add tags of included functions to docs
+
+### ft_memchr CHANGE TYPECAST FROM INT TO SIZE_T
