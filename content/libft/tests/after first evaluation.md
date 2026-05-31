@@ -55,6 +55,7 @@ batch related to testing fd functions:
 >open()
 >close()
 >write()
+///On  success,  the number of bytes written is returned.  On error, -1 is returned, and errno is set to indicate the cause of the error.
 >read()
 >unlink()
 >lseek()
