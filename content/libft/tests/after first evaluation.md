@@ -40,3 +40,6 @@ batch related to testing fd functions:
 ### Handling null's in lists (gpt suggests)
 `ft_lstadd_front : if (!lst || !new) return ;`
 `ft_lstiter : if (!lst || !f) return ;`
+
+
+### Atoi handling 213456765432345678765432345678765432345676543234567
