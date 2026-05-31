@@ -98,3 +98,8 @@ optimize using buffer
 #### ft_strdup use strlcpy 
 
 ####         f(i, s + i); // &s[i] == s + i STRITERI
+
+###  malloc - clears them
+
+
+#### strjoin maximal buffer length
