@@ -43,3 +43,5 @@ batch related to testing fd functions:
 
 
 ### Atoi handling 213456765432345678765432345678765432345676543234567
+
+### lists functions must include guards for all arguments
