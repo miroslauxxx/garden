@@ -53,3 +53,9 @@ batch related to testing fd functions:
 ### add tags of included functions to docs
 
 ### ft_memchr CHANGE TYPECAST FROM INT TO SIZE_T
+
+
+#### memmove use memcpy
+
+
+##### when casting to int, use size_t instead 
