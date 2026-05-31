@@ -48,3 +48,6 @@ batch related to testing fd functions:
 
 
 ### ft_lstclear -> ft_lstdelone
+
+
+### add tags of included functions to docs
