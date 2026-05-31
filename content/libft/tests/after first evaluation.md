@@ -104,4 +104,4 @@ optimize using buffer
 
 #### strjoin maximal buffer length
 
-#### strlcpy order of src_len
+#### strlcpy order of src_len +  ft_strlcat order of length and check for dst
