@@ -81,3 +81,18 @@ void	ft_putstr_fd(char *s, int fd)
 while (s[++i] && write(fd, &s[i], sizeof(char)))
 
 ```
+
+#### macro
+```
+`STDOUT_FILENO` is a POSIX macro defined in `<unistd.h>`
+```
+
+#### ft_putnbr_fd
+```
+optimize using buffer
+```
+
+#### ft_split 57
+
+
+#### ft_strdup use strlcpy 
