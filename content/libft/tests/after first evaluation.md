@@ -103,3 +103,5 @@ optimize using buffer
 
 
 #### strjoin maximal buffer length
+
+#### strlcpy order of src_len
