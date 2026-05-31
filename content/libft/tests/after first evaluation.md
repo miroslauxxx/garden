@@ -76,3 +76,8 @@ void	ft_putstr_fd(char *s, int fd)
 
 ```
 
+#### why gdb shows only one step there ?! 
+```
+while (s[++i] && write(fd, &s[i], sizeof(char)))
+
+```
