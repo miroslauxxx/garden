@@ -61,3 +61,18 @@ batch related to testing fd functions:
 >lseek()
 ```
 
+ft_putchar_fd
+```
+void	ft_putstr_fd(char *s, int fd)
+{
+	int	i;
+
+	if (fd < 0)
+		return ;
+	i = -1;
+	while (s[++i] && write(fd, &s[i], sizeof(char)))
+		;
+}
+
+```
+
