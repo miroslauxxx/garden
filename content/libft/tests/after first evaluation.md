@@ -108,3 +108,5 @@ optimize using buffer
 
 
 #### 	if (n == 0) return (0); for strncmp
+
+#### check for size = 0 at strnstr 

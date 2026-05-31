@@ -33,5 +33,6 @@ const char *big = "Foo Bas Baz";
 ptr = strnstr(big, little, 4); // return NULL
 ```
 SRC: https://github.com/lattera/freebsd/blob/master/lib/libc/string/strnstr.c
+https://github.com/reswitched/newlib/blob/master/newlib/libc/string/strnstr.c
 
-MAN:
+MAN:https://man.archlinux.org/man/strnstr.3bsd
