@@ -18,16 +18,6 @@
 ### fd for negative number
 `wikipedia : File descriptors typically have non-negative integer values, with negative values being reserved to indicate "no value" or error conditions.`
 
-### fd tests
-```
-batch related to testing fd functions:
->open()
->close()
->read()
->unlink()
->lseek()
-```
-
 ### Ftsplit how get next word remembers it's index
 `get_next_word(&s, c) - &s is the memory address of the variable s itself.`
 
@@ -57,5 +47,16 @@ batch related to testing fd functions:
 
 #### memmove use memcpy
 
+##### when casting to int, use size_t instead write
 
-##### when casting to int, use size_t instead 
+### fd tests
+```
+batch related to testing fd functions:
+>open()
+>close()
+>write()
+>read()
+>unlink()
+>lseek()
+```
+
