@@ -105,3 +105,6 @@ optimize using buffer
 #### strjoin maximal buffer length
 
 #### strlcpy order of src_len +  ft_strlcat check for dst
+
+
+#### 	if (n == 0) return (0); for strncmp
