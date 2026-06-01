@@ -9,6 +9,7 @@ RETURN VALUE:
 	None.
 
 #setting #zero #memory #strings #libft
+#ft_memset
 
 ```NOTES 
 >Why we are able to ignore return value of memset ?

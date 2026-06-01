@@ -8,6 +8,7 @@ RETURN VALUE:
 	The substring. NULL if the allocation fails.
 
 #string #copy #malloc #libft
+#ft_strlcpy #ft_strlen #ft_strdup
 
 ```C
 two guards - one against start exactly at position of s_l, another to protect len of oversize by comparing it with s_l.

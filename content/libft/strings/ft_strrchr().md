@@ -9,6 +9,7 @@ RETURN VALUE:
 	The strrchr() function return a pointer to the matched character or NULL if the character is not found. The terminating null byte is considered part of the string, so that if c is specified as '\0', this function will return a pointer to the terminator.
 
 #string #scanning #character #libft 
+#ft_strlen
 
 ```NOTES 
 > cast `int c` to unsigned char

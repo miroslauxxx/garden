@@ -9,6 +9,7 @@ RETURN VALUE:
 	The converted value or 0 on error.
 
 #conversion #string #integer #stdlib #libft 
+#ft_isdigit
 
 ```NOTES 
 >Skip all standard whitespace characters

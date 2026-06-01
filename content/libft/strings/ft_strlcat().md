@@ -9,6 +9,7 @@ RETURN VALUE:
 	Initial length of dst plus the length of src.
 
 #concatenate #string #bsd #libft
+#ft_strlen 
 
 ```NOTES 
 > returns src_len + dst_len on success or src_len + size if dst_len == size 

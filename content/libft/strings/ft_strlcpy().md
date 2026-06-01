@@ -9,6 +9,7 @@ RETURN VALUE:
 	Length of src.
 
 #copy #string #bsd #libft 
+#ft_strlen 
 
 ```NOTES 
 > returns src_len anyway

@@ -12,6 +12,7 @@ RETURN VALUE:
 	Return a pointer to the allocated memory, which is suitably aligned for any type that fits into the requested size or less. On error, these functions return NULL. 
 
 #setting #memory #malloc #stdlib  #libft
+#ft_bzero
 
 ```NOTES 
 //nmemb non null and size < size_t-1 / nmemb

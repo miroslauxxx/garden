@@ -8,6 +8,7 @@ RETURN VALUE:
 `None`
 
 #lists #addElement #back #libft
+#ft_lstlast
 
 ```NOTES 
 

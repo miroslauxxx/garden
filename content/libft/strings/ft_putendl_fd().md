@@ -7,7 +7,7 @@ DESCRIPTION:
 RETURN VALUE:
 `None`
 
-#string  #print #nl #libft
+#string  #fd #print #nl #libft
 
 ```NOTES 
 

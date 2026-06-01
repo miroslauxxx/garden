@@ -8,6 +8,7 @@ RETURN VALUE:
 `The string created from the successive applications of ’f’. Returns NULL if the allocation fails.`
 
 #iterate #apply #copy #string #malloc #libft
+#ft_strlen 
 
 ```NOTES 
 

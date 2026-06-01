@@ -8,6 +8,7 @@ RETURN VALUE:
 	The new string. NULL if the allocation fails.
 
 #concatenate  #copy #malloc #strings #libft
+#ft_strlen #ft_strlcpy #ft_strlcat
 
 ```NOTES 
 

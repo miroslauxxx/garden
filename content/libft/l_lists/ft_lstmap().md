@@ -8,6 +8,7 @@ RETURN VALUE:
 `The new list. NULL if the allocation fails.`
 
 #lists #iterate #apply #malloc #free #libft
+#ft_lstnew #ft_lstclear #ft_lstadd_back
 
 ```NOTES 
 

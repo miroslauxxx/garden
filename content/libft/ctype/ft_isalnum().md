@@ -9,6 +9,7 @@ RETURN VALUE:
 	The values returned are nonzero if the character `c` falls into the tested class, and zero if not.
 
 #classification #character #ctype #libft 
+#ft_isalpha #ft_isdigit
 
 ```NOTES 
 

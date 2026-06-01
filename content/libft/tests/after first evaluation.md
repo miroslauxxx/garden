@@ -32,12 +32,19 @@
 `ft_lstiter : if (!lst || !f) return ;`
 
 
-### Atoi handling 213456765432345678765432345678765432345676543234567
+### Atoi handling
+`pre-story:
+- atoi() : receives string as argument and converts it to integer. Based on manual - it the same as strtol(nptr, NULL, 10);, which basically did the same operation. So generaly this guy works with numbers bigger then LONG_MAX, and until you'll discover docs in detail OR beeing evaluated by experienced and strict student with excellent C knowledge - you'll not be able to handle this edge case. BTW moulinette sucking here - it's not handling it. Finally, what's we need to add to our Piscine atoi() to handle such edge cases after calculating actual result:`
+- guard against res > LONG_MAX (or INT_MAX as u wish) w/ positive sign. There returning -1;
+- guard against res > (unsigned long long)LONG_MAX +1 w/ negative sign. There returning 0;
+P.S.: typecasting to unsigned long long + 1 needed to represent bigger value then LONG_MAX could actually supply, because negative value considering 0 as one of possible values and not assuming it as additional;
 
 ### lists functions must include guards for all arguments
+++++ 
 
 
 ### ft_lstclear -> ft_lstdelone
+not possible, because in lstclear we are expecting any function that could be applied as delete function, basically if we want to pass void func that do nothing - we must be able to handle it. 
 
 
 ### add tags of included functions to docs
@@ -110,3 +117,9 @@ optimize using buffer
 #### 	if (n == 0) return (0); for strncmp
 
 #### check for size = 0 at strnstr 
+
+
+
+#### unsigned int long instead of int in typecasting
+
+### ft_strmapi review and try to replace copying with strlcpy

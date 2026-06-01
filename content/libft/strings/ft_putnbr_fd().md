@@ -7,7 +7,8 @@ DESCRIPTION:
 RETURN VALUE:
 `None`
 
-#number #print #libft
+#number #print #fd #libft #recursion
+#ft_putstr_fd #ft_putchar_fd #ft_putnbr_fd
 
 ```NOTES 
 

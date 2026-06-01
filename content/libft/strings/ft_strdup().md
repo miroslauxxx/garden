@@ -9,6 +9,7 @@ RETURN VALUE:
 	On success, the strdup() function returns a pointer to the duplicated string. It returns NULL if insufficient memory was available, with errno set to indicate the error.
 
 #string #copy #malloc #libft
+#ft_strlen
 
 ```NOTES 
 
