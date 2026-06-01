@@ -10,7 +10,7 @@ RETURN VALUE:
 #string  #fd #print #nl #libft
 
 ```NOTES 
-
+wikipedia : File descriptors typically have non-negative integer values, with negative values being reserved to indicate "no value" or error conditions.
 ``` 
 
 ```EDGE_CASES

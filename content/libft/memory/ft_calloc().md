@@ -30,6 +30,17 @@ void *ptr2 = ft_calloc(5, 0);  // Returns a valid unique pointer
 
 // integer overflow 
 ft_calloc(SIZE_MAX, 2) // Multiplication overflows size_t. Safe check returns NULL.
+
+
+>man7.org : if n or size is 0, then calloc() returns a unique pointer value that can later be successfully passed to free().
+
+>linux.die.net : If nmemb or size is 0, then calloc() returns either NULL, or a unique pointer value that can later be successfully passed to free().
+
+>man.openbsd.org : Allocation of a zero size object returns a pointer to a zero size object
+
+>man.archlinux.org : If n or size is 0, then calloc() returns a unique pointer value that can later be successfully passed to free()
+
+>stackoverflow.com : 7.20.3 If the size of the space requested is zero, the behavior is implementation defined: either a null pointer is returned, or the behavior is as if the size were some nonzero value, except that the returned pointer shall not be used to access an object.
 ```
 SRC: https://github.com/gcc-mirror/gcc/blob/master/libiberty/calloc.c
 SRC: https://github.com/kraj/uClibc/blob/master/libc/stdlib/malloc/calloc.c

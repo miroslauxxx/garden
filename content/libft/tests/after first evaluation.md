@@ -1,22 +1,14 @@
 ### size_t: with negative value 
-`>using negative value for size_t will cause undefined behavior, specially in my  cases with i = -1 when pre-increment happens on start of loop.`
+
   
 ### calloc: handling zero arguments
-`>man7.org : if n or size is 0, then calloc() returns a unique pointer value that can later be successfully passed to free().`
 
-`>linux.die.net : If nmemb or size is 0, then calloc() returns either NULL, or a unique pointer value that can later be successfully passed to free().`
-
-`>man.openbsd.org : Allocation of a zero size object returns a pointer to a zero size object`
-
-`>man.archlinux.org : If n or size is 0, then calloc() returns a unique pointer value that can later be successfully passed to free()`
-
-`>stackoverflow.com : 7.20.3 If the size of the space requested is zero, the behavior is implementation defined: either a null pointer is returned, or the behavior is as if the size were some nonzero value, except that the returned pointer shall not be used to access an object.`
 
 ### strchr - why cannot use return for all cases
 `stupid question, don't cry try again` 
 
 ### fd for negative number
-`wikipedia : File descriptors typically have non-negative integer values, with negative values being reserved to indicate "no value" or error conditions.`
+
 
 ### Ftsplit how get next word remembers it's index
 `get_next_word(&s, c) - &s is the memory address of the variable s itself.`
@@ -27,9 +19,8 @@
 ### Learn about statement inside conditions of loop
 `////////////////////`
 
-### Handling null's in lists (gpt suggests)
-`ft_lstadd_front : if (!lst || !new) return ;`
-`ft_lstiter : if (!lst || !f) return ;`
+### Handling null's in every argument of linked lists functions required ! 
+
 
 
 ### Atoi handling
@@ -44,17 +35,20 @@ P.S.: typecasting to unsigned long long + 1 needed to represent bigger value the
 
 
 ### ft_lstclear -> ft_lstdelone
-not possible, because in lstclear we are expecting any function that could be applied as delete function, basically if we want to pass void func that do nothing - we must be able to handle it. 
+
 
 
 ### add tags of included functions to docs
+++++
 
 ### ft_memchr CHANGE TYPECAST FROM INT TO SIZE_T
-
++++
 
 #### memmove use memcpy
+++++
 
 ##### when casting to int, use size_t instead write
++++
 
 ### fd tests
 ```
@@ -85,7 +79,6 @@ void	ft_putstr_fd(char *s, int fd)
 
 #### why gdb shows only one step there ?! 
 ```
-while (s[++i] && write(fd, &s[i], sizeof(char)))
 
 ```
 
@@ -96,30 +89,26 @@ while (s[++i] && write(fd, &s[i], sizeof(char)))
 
 #### ft_putnbr_fd
 ```
-optimize using buffer
+
 ```
 
 #### ft_split 57
+++++
 
 
 #### ft_strdup use strlcpy 
+++++
 
 ####         f(i, s + i); // &s[i] == s + i STRITERI
+++++
 
 ###  malloc - clears them
-
++++++
 
 #### strjoin maximal buffer length
 
 #### strlcpy order of src_len +  ft_strlcat check for dst
 
-
 #### 	if (n == 0) return (0); for strncmp
-
-#### check for size = 0 at strnstr 
-
-
-
-#### unsigned int long instead of int in typecasting
-
++++++
 ### ft_strmapi review and try to replace copying with strlcpy
