@@ -14,13 +14,13 @@
 	ft_strlcat - ebala suka !!!!
 	ft_strchr - +++
 	ft_strrchr - +++
-	ft_strncmp
-	ft_strnstr 
-	ft_substr
-	ft_strjoin
-	ft_strtrim
-	ft_split
-	ft_strmapi
-	ft_striteri  
-	ft_atoi
+	ft_strncmp - +++
+	ft_strnstr - +++  
+	ft_substr - +++ 
+	ft_strjoin - +++ 
+	ft_strtrim - +++ 
+	ft_split - 
+	ft_strmapi - 
+	ft_striteri - ++ 
+	ft_atoi - 
 	ft_itoa
