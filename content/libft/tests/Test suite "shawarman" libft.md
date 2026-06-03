@@ -22,5 +22,14 @@
 	ft_split - 
 	ft_strmapi - 
 	ft_striteri - ++ 
-	ft_atoi - 
-	ft_itoa
+	ft_atoi - +++ 
+	ft_itoa - ++  
+
+
+	ft_isalpha -  
+	ft_isdigit
+	ft_isalnum  
+	ft_isascii
+	ft_isprint
+	ft_toupper
+	ft_tolower
