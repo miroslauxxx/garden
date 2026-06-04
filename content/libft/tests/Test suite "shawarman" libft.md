@@ -26,10 +26,18 @@
 	ft_itoa - ++  
 
 
-	ft_isalpha -  
-	ft_isdigit
-	ft_isalnum  
-	ft_isascii
-	ft_isprint
-	ft_toupper
-	ft_tolower
+	ft_isalpha - +++
+	ft_isdigit - +++
+	ft_isalnum  - +++
+	ft_isascii - +++
+	ft_isprint - +++
+	ft_toupper - +++
+	ft_tolower - +++
+
+- feature: specify list of functions you want to test with
+    - separate file
+    - using `make` argument
+- feature: test functions by their groups
+- feature: test for additional stuff (atoi, fd, null as value in lists, using of non-ft functions etc.)
+- readme file: includes detailed description of all tested stuff, where to focus attention when reviewing, how to contribute, my own experience, how and why i decided to implement this library
+- 
