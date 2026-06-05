@@ -47,3 +47,6 @@
 - readme file: includes detailed description of all tested stuff, where to focus attention when reviewing, how to contribute, my own experience, how and why i decided to implement this library
 - use one cycle for all char classification functions
 
+- memcpy + cases
+- strlen + null handling
+- memset :- `ft_memset` takes a `int c` parameter (the value to set), but it converts it to an `unsigned char` and copies it into **each byte** of the target memory area. By passing `1`, you are telling `ft_memset` to set every single one of those 20 bytes to the value `0x01`. The Integer Representation (The "Magic" Number) Because `ft_memset` writes byte-by-byte, a single `int` inside `arr` gets filled with `0x01` in all 4 of its bytes.
