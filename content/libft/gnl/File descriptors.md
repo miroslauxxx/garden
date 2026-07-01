@@ -1,5 +1,5 @@
 My personal interpretation of  `*_fd` functions presence in the very end of second part of libft - neccesity to test them. It's takes time to write (lol, it's Piscine :) ), but the most interesting - to test them. Here we got freedom, freedom of style and allowed functions. I gonna use read(), open(), close(), unlink(), pipe() and fork() (list may be not concrete). That's nice point to start exploring get_next_line.   
-,,, My personal interpretation of  `*_fd` functions presence in the very end of second part of libft - neccesity to test them. It's takes time to write (lol, it's Piscine :) ), but the most interesting - to test them. Here we got freedom, freedom of style and allowed functions. I gonna use read(), open(), close(), unlink(), pipe() and fork() (list may be not concrete). That's nice point to start exploring get_next_line.
+,,, 
 
 - `File Descriptors` (FD) are non-negative integers `(from 0 to 1024)` that are associated with files that are opened. When we open an existing file or create a new one, the parent process forks a process, the child process inherits the file descriptors of the parent and kernel returns a file descriptor to the calling code. 
 
