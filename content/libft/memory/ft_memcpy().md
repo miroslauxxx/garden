@@ -11,6 +11,7 @@ RETURN VALUE:
 #memory #copy #string  #libft
 
 ```NOTES 
+typecast src and dest to pointers to unsigned char, then read byte-by-byte at most `n` bytes of sp and assign to dp, return dst.   
 overlap example: 
 memcpy(p+1, p, 42); - undefined behaviour.
 ``` 

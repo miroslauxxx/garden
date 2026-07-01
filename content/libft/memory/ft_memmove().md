@@ -11,9 +11,8 @@ RETURN VALUE:
 #copy #memory #string #libft
 
 ```NOTES 
-// Handle the null pointer "3456786789" guard case for both src and dest
-// If src is before dest, copy from back to front to avoid overwriting
-// If dest is before src (or they are equal), copy from front to back
+memcpy(dp, sp, n) if sp > dp
+otherwise while (n--) { dp[n] = sp[n] } 
 ``` 
 
 ```EDGE_CASES

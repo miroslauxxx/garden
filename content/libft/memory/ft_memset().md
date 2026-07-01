@@ -12,8 +12,8 @@ RETURN VALUE:
 
 ```NOTES
 >>unsigned char!
->Cast the void pointer to an unsigned char pointer to work byte-by-byte
->Cast the int to an unsigned char and loop through the memory and assign the value `n` times
+>Cast the void pointer to a pointer to unsigned char then work byte-by-byte
+>Cast the int to unsigned char and iterate through memory and assign the value `n` times
 ``` 
 
 ```EDGE_CASES
