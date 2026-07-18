@@ -1,8 +1,0 @@
-{
-	"nodes":[
-		{"id":"d7eabc665b3cb86c","x":-240,"y":-280,"width":250,"height":60,"type":"text","text":"flag_helpers.c"},
-		{"id":"e33f288723ca14e2","type":"text","text":"input_helpers.c","x":-240,"y":-140,"width":250,"height":60},
-		{"id":"fc240db0edeb6384","type":"text","text":"utils.c","x":-240,"y":-20,"width":250,"height":60}
-	],
-	"edges":[]
-}

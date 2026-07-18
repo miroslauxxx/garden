@@ -1,2 +1,0 @@
-[[ll]]
-[[first_part]]
