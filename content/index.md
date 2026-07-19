@@ -2,5 +2,3 @@
 
 #### and there is something more *_*
 
-### my github statistics
-
