@@ -1,4 +1,4 @@
-My personal interpretation of  `*_fd` functions presence in the very end of second part of libft - neccesity to test them. It's takes time to write (lol, it's Piscine :) ), but the most interesting - to test them. Here we got freedom, freedom of style and allowed functions. I gonna use [read()](https://man.archlinux.org/man/core/man-pages/close.2.en), [open()](https://man.archlinux.org/man/core/man-pages/open.2.en), [close()](https://man.archlinux.org/man/core/man-pages/close.2.en), [unlink()](https://man.archlinux.org/man/core/man-pages/unlink.2.en), [pipe()](https://man.archlinux.org/man/core/man-pages/pipe.2.en) and [fork()](https://man.archlinux.org/man/fork.2) (list may be not concrete). That's nice point to start exploring get_next_line.
+My personal interpretation of  `*_fd` functions presence in the very end of second part of libft - neccesity to test them. It's takes time to write (lol, it's Piscine :) ), but the most interesting - to test them. Here we got freedom, freedom of style and allowed functions. That's nice point to start exploring get_next_line.
 ,,, 
 
 - `File Descriptors` (FD) are non-negative integers `(from 0 to 1024)` that are associated with files that are opened. When we open an existing file or create a new one, the parent process forks a process, the child process inherits the file descriptors of the parent and kernel returns a file descriptor to the calling code. 
@@ -21,3 +21,27 @@ My personal interpretation of  `*_fd` functions presence in the very end of seco
 
 	FD's for a particular process can be seen in `/proc/[pid]/fd` (on Unix based systems).
 
+	It is possible and useful to have multiple descriptors referring to the same open file. These file descriptors may be open in the same process or in different processes. 
+
+	To understand what is going on, we need to examine three data structures maintained by the kernel:
+	-  The per-process file descriptor table.
+	-  The system-wide table of open file descriptions. 
+	-  The file system i-node table.
+
+	For each process, the kernel maintains a table of open file descriptors. Each entry in this table records information about a single file descriptor, including:
+	-  Set of flags controlling the operation of the file descriptor 
+	-  Reference to the open file description.
+
+	The kernel maintains a system-wide table of all open file descriptions. (This table is sometimes referred to as the open file table, and its entries are sometimes called open file handles.) An open file description stores all information relating to an open file, including:
+	- the current file offset (as updated by read() and write(), or explicitly modified using lseek());
+	- status flags specified when opening the file (i.e., the flags argument to open());
+	- the file access mode (read-only, write-only, or read-write, as specified in open());
+	- settings relating to signal-driven I/O 
+	- reference to the i-node object for this file.
+
+	Each file system has a table of i-nodes for all files residing in the file system:
+	- file type (e.g., regular file, socket, or FIFO) and permissions;
+	- pointer to a list of locks held on this file;
+	- various properties of the file, including its size and timestamps relating to different types of file operations.
+
+	descriptor is integer applied for opened file, descriptor is content that can be read or 
