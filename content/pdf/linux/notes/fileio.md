@@ -26,41 +26,51 @@ if (fd == -1)
 	errExit("open")
 ```
 
-Flag                                  Purpose
+
 ___
-O_RDONLY\\ \\ \\ \\ \\ \\Open for reading only 
+```
+Flag           <------>      Purpose
+
+O_RDONLY                     Open for reading only 
 
 O_WRONLY                     Open for writing only 
 
-O_RDWR                          Open for reading and writing 
+O_RDWR                       Open for reading and writing 
 
-O_CLOEXEC                     Set the close-on-exec flag (since Linux 2.6.23)
+O_CLOEXEC                    Set the close-on-exec flag (since Linux 2.6.23)
 
-O_CREAT                          Create file if it doesn’t already exist 
+O_CREAT                      Create file if it doesn’t already exist 
 
-O_DIRECT                        File I/O bypasses buffer cache
+O_DIRECT                     File I/O bypasses buffer cache
 
-O_DIRECTORY                 Fail if pathname is not a directory 
+O_DIRECTORY                  Fail if pathname is not a directory 
 
-O_EXCL with O_CREAT:  Create file exclusively 
+O_EXCL with O_CREAT:         Create file exclusively 
 
 O_LARGEFILE                  Used on 32-bit systems to open large files
 
 O_NOATIME                    Don’t update file last access time on read() (since Linux 2.6.8)
 
-O_NOCTTY                      Don’t let pathname become the controlling terminal 
+O_NOCTTY                     Don’t let pathname become the controlling terminal 
 
-O_NOFOLLOW                Don’t dereference symbolic links 
+O_NOFOLLOW                   Don’t dereference symbolic links 
 
-O_TRUNC                         Truncate existing file to zero length 
+O_TRUNC                      Truncate existing file to zero length 
 
-O_APPEND                      Writes are always appended to end of file 
+O_APPEND                     Writes are always appended to end of file 
 
-O_ASYNC                         Generate a signal when I/O is possible
+O_ASYNC                      Generate a signal when I/O is possible
 
-O_DSYNC                         Provide synchronized I/O data integrity (since Linux 2.6.33)
+O_DSYNC                      Provide synchronized I/O data integrity (since Linux 2.6.33)
 
-O_NONBLOCK                Open in nonblocking mode 
+O_NONBLOCK                   Open in nonblocking mode 
 
-O_SYNC                           Make file writes synchronous 
+O_SYNC                       Make file writes synchronous
+``` 
 ___
+
+Since kernel 2.6.22, the Linux-specific files in the directory /proc/PID/fdinfo
+can be read to obtain information about the file descriptors of any process on
+the system. There is one file in this directory for each of the process’s open file
+descriptors, with a name that matches the number of the descriptor. The pos
+field in this file shows the current file offset. The flags field is an octal number that shows the file access mode flags and open file status flags. (To decode this number, we need to look at the numeric values of these flags in the C library header files.)
