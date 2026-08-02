@@ -112,6 +112,44 @@ ssize_t pwrite(int fd, const void *buf, size_t count, off_t offset);
 ```
 These system calls can be particularly useful in multithreaded applications. As we’ll see in Chapter 29, all of the threads in a process share the same file descriptor table. This means that the file offset for each open file is global to all threads. Using pread() or pwrite(), multiple threads can simultaneously perform I/O on the same file descriptor without being affected by changes made to the file offset by other threads. If we attempted to use lseek() plus read() (or write()) instead, then we would create a race condition. If we are repeatedly performing lseek() calls followed by file I/O, then the pread() and pwrite() system calls can also offer a performance advantage in some cases. This is because the cost of a single pread() (or pwrite()) system call is less than the cost of two system calls: lseek() and read() (or write()). However, the cost of system calls is usually dwarfed by the time required to actually per-form I/O.
 
+#### readv / writev
+```
+#include <sys/uio.h>
+
+ssize_t readv(int fd, const struct iovec *iov, int iovcnt);
+		Returns number of bytes read, 0 on EOF, or –1 on error
+ssize_t writev(int fd, const struct iovec *iov, int iovcnt);
+		Returns number of bytes written, or –1 on error
+```
+Instead of accepting a single buffer of data to be read or written, these functions transfer multiple buffers of data in a single system call. The set of buffers to be transferred is defined by the array iov. The integer count specifies the number of elements in iov. Each element of iov is a structure of the following form:
+```
+struct iovec {
+	void *iov_base; /* Start address of buffer */
+	size_t iov_len; /* Number of bytes to transfer to/from buffer */
+};
+```
+#### preadv / pwritev
+
+```
+#define _BSD_SOURCE
+#include <sys/uio.h>
+
+ssize_t preadv(int fd, const struct iovec *iov, int iovcnt, off_t offset);
+		Returns number of bytes read, 0 on EOF, or –1 on error
+ssize_t pwritev(int fd, const struct iovec *iov, int iovcnt, off_t offset);
+		Returns number of bytes written, or –1 on error
+```
+The preadv() and pwritev() system calls perform the same task as readv() and writev(), but perform the I/O at the file location specified by offset (like pread() and pwrite()).
+
+####  truncate / ftruncate
+```
+#include <unistd.h>
+
+int truncate(const char *pathname, off_t length);
+int ftruncate(int fd, off_t length);
+		Both return 0 on success, or –1 on error
+```
+The truncate() and ftruncate() system calls set the size of a file to the value specified by length. If the file is longer than length, the excess data is lost. If the file is currently shorter than length, it is extended by padding with a sequence of null bytes or a hole. The difference between the two system calls lies in how the file is specified. With truncate(), the file, which must be accessible and writable, is specified as a pathname string. If pathname is a symbolic link, it is dereferenced. The ftruncate() system call takes a descriptor for a file that has been opened for writing. It doesn’t change the file offset for the file.
 #### summary:
 In order to perform I/O on a regular file, we must first obtain a file descriptor using open(). I/O is then performed using read() and write(). After performing all I/O, we should free the file descriptor and its associated resources using close(). These system calls can be used to perform I/O on all types of files. The fact that all file types and device drivers implement the same I/O interface allows for universality of I/O, meaning that a program can typically be used with any type of file without requiring code that is specific to the file type. For each open file, the kernel maintains a file offset, which determines the location at which the next read or write will occur. The file offset is implicitly updated by reads and writes. Using lseek(), we can explicitly reposition the file offset to any location within the file or past the end of the file. Writing data at a position beyond the previous end of the file creates a hole in the file. Reads from a file hole return bytes containing zeros. The ioctl() system call is a catchall for device and file operations that don’t fit into the standard file I/O model.
 #### atomicity
