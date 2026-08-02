@@ -9,6 +9,7 @@ ___
 #### open
 Permissions actually placed on a new file depend not just on the mode argument, but also on the process umask and the (optionally present) default access control list of the parent directory. 
 ```
+#include <fcntl.h>
 /* Open existing file for reading */
 fd = open("startup", O_RDONLY);
 if (fd == -1)
@@ -63,17 +64,13 @@ O_NONBLOCK                   Open in nonblocking mode
 O_SYNC                       Make file writes synchronous
 ``` 
 ___
-Since kernel 2.6.22, the Linux-specific files in the directory /proc/PID/fdinfo
-can be read to obtain information about the file descriptors of any process on
-the system. There is one file in this directory for each of the process’s open file
-descriptors, with a name that matches the number of the descriptor. The pos
-field in this file shows the current file offset. The flags field is an octal number that shows the file access mode flags and open file status flags. (To decode this number, we need to look at the numeric values of these flags in the C library header files.)
-
+Since kernel 2.6.22, the Linux-specific files in the directory /proc/PID/fdinfo can be read to obtain information about the file descriptors of any process on the system. There is one file in this directory for each of the process’s open file descriptors, with a name that matches the number of the descriptor. The pos field in this file shows the current file offset. The flags field is an octal number that shows the file access mode flags and open file status flags. (To decode this number, we need to look at the numeric values of these flags in the C library header files.)
 #### read
 read() doesn’t place a terminating null byte at the end of the string. A moment’s reflection leads us to realize that this must be so, since read() can be used to read any sequence of bytes from a file. In some cases, this input might be text, but in other cases, the input might be binary integers or C structures in binary form. There is no way for read() to tell the difference, and so it can’t attend to the C convention of null terminating character strings. If a terminating null byte is required at the end of the input buffer, we must put it there explicitly.
-
 #### lseek
 ```
+#include <unistd.h>
+
 off_t lseek(int fd, off_t offset, int whence);
 					returns new file offset if successful, or –1 on error
 ```
@@ -95,7 +92,6 @@ socket, or terminal is not permitted; lseek() fails, with errno set to ESPIPE. O
 other hand, it is possible to apply lseek() to devices where it is sensible to do so. For
 example, it is possible to seek to a specified location on a disk or tape device
 `Unseekable file descriptors` are stream-type files (such as pipes and sockets) they do not use the offset because the data in the file is not randomly accessible. 
-
 #### ioctl
 The ioctl() system call is a general-purpose mechanism for performing file and
 device operations that fall outside the universal I/O model.
@@ -106,6 +102,22 @@ int ioctl(int fd, int request, ... /* argp */);
 The `fd` argument is an open file descriptor for the device or file upon which the
 control operation specified by `request` is to be performed. Device-specific header
 files define constants that can be passed in the `request` argument.
+#### pread / pwrite (perform location)
+```
+#include <unistd.h>
+ssize_t pread(int fd, void *buf, size_t count, off_t offset);
+		Returns number of bytes read, 0 on EOF, or –1 on error
+ssize_t pwrite(int fd, const void *buf, size_t count, off_t offset);
+		Returns number of bytes written, or –1 on error
+```
+These system calls can be particularly useful in multithreaded applications. As we’ll see in Chapter 29, all of the threads in a process share the same file descriptor table. This means that the file offset for each open file is global to all threads. Using pread() or pwrite(), multiple threads can simultaneously perform I/O on the same file descriptor without being affected by changes made to the file offset by other threads. If we attempted to use lseek() plus read() (or write()) instead, then we would create a race condition. If we are repeatedly performing lseek() calls followed by file I/O, then the pread() and pwrite() system calls can also offer a performance advantage in some cases. This is because the cost of a single pread() (or pwrite()) system call is less than the cost of two system calls: lseek() and read() (or write()). However, the cost of system calls is usually dwarfed by the time required to actually per-form I/O.
 
 #### summary:
 In order to perform I/O on a regular file, we must first obtain a file descriptor using open(). I/O is then performed using read() and write(). After performing all I/O, we should free the file descriptor and its associated resources using close(). These system calls can be used to perform I/O on all types of files. The fact that all file types and device drivers implement the same I/O interface allows for universality of I/O, meaning that a program can typically be used with any type of file without requiring code that is specific to the file type. For each open file, the kernel maintains a file offset, which determines the location at which the next read or write will occur. The file offset is implicitly updated by reads and writes. Using lseek(), we can explicitly reposition the file offset to any location within the file or past the end of the file. Writing data at a position beyond the previous end of the file creates a hole in the file. Reads from a file hole return bytes containing zeros. The ioctl() system call is a catchall for device and file operations that don’t fit into the standard file I/O model.
+#### atomicity
+All system calls are executed atomically. By this, we mean that
+the kernel guarantees that all of the steps in a system call are completed as a single operation, without being interrupted by another process or thread. It allows us to avoid race conditions. A race condition is a situation where the result produced by two processes (or
+threads) operating on shared resources depends in an unexpected way on the relative order in which the processes gain access to the CPU.
+#### race condition
+Race condition is a concurrency anomaly that occurs when multiple threads or processes concurrently read and write to a shared memory location without proper synchronization. The anomaly manifests because the system's final state depends entirely on the non-deterministic sequence, timing, or interleaving of CPU execution threads. High-level programming operations (such as `x++`) are compiled into multiple hardware instructions—typically `read`, `modify`, and `write`—which can be preempted halfway through by another thread accessing the same location. This leads to insidious bugs such as data corruption, memory leaks, and unpredictable system state that are notoriously difficult to consistently reproduce and debug. 
+
