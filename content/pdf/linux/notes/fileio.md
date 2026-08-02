@@ -29,21 +29,38 @@ if (fd == -1)
 Flag                                  Purpose
 ___
 O_RDONLY                      Open for reading only 
+
 O_WRONLY                     Open for writing only 
+
 O_RDWR                          Open for reading and writing 
+
 O_CLOEXEC                     Set the close-on-exec flag (since Linux 2.6.23)
+
 O_CREAT                          Create file if it doesn’t already exist 
+
 O_DIRECT                        File I/O bypasses buffer cache
+
 O_DIRECTORY                 Fail if pathname is not a directory 
+
 O_EXCL with O_CREAT:  Create file exclusively 
+
 O_LARGEFILE                  Used on 32-bit systems to open large files
+
 O_NOATIME                    Don’t update file last access time on read() (since Linux 2.6.8)
+
 O_NOCTTY                      Don’t let pathname become the controlling terminal 
+
 O_NOFOLLOW                Don’t dereference symbolic links 
+
 O_TRUNC                         Truncate existing file to zero length 
+
 O_APPEND                      Writes are always appended to end of file 
+
 O_ASYNC                         Generate a signal when I/O is possible
+
 O_DSYNC                         Provide synchronized I/O data integrity (since Linux 2.6.33)
+
 O_NONBLOCK                Open in nonblocking mode 
+
 O_SYNC                           Make file writes synchronous 
 ___
