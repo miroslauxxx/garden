@@ -28,7 +28,7 @@ if (fd == -1)
 
 Flag                                  Purpose
 ___
-O_RDONLY                      Open for reading only 
+O_RDONLY\\ \\ \\ \\ \\ \\Open for reading only 
 
 O_WRONLY                     Open for writing only 
 
