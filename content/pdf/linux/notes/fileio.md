@@ -150,12 +150,43 @@ int ftruncate(int fd, off_t length);
 		Both return 0 on success, or –1 on error
 ```
 The truncate() and ftruncate() system calls set the size of a file to the value specified by length. If the file is longer than length, the excess data is lost. If the file is currently shorter than length, it is extended by padding with a sequence of null bytes or a hole. The difference between the two system calls lies in how the file is specified. With truncate(), the file, which must be accessible and writable, is specified as a pathname string. If pathname is a symbolic link, it is dereferenced. The ftruncate() system call takes a descriptor for a file that has been opened for writing. It doesn’t change the file offset for the file.
-#### summary:
-In order to perform I/O on a regular file, we must first obtain a file descriptor using open(). I/O is then performed using read() and write(). After performing all I/O, we should free the file descriptor and its associated resources using close(). These system calls can be used to perform I/O on all types of files. The fact that all file types and device drivers implement the same I/O interface allows for universality of I/O, meaning that a program can typically be used with any type of file without requiring code that is specific to the file type. For each open file, the kernel maintains a file offset, which determines the location at which the next read or write will occur. The file offset is implicitly updated by reads and writes. Using lseek(), we can explicitly reposition the file offset to any location within the file or past the end of the file. Writing data at a position beyond the previous end of the file creates a hole in the file. Reads from a file hole return bytes containing zeros. The ioctl() system call is a catchall for device and file operations that don’t fit into the standard file I/O model.
+
+#### Creating Temporary Files
+```
+#include <stdlib.h>
+
+int mkstemp(char *template);
+		Returns file descriptor on success, or –1 on error
+```
+The mkstemp() function generates a unique filename based on a template supplied by the caller and opens the file, returning a file descriptor that can be used with I/O system calls. The template argument takes the form of a pathname in which the last 6 characters
+must be XXXXXX. These 6 characters are replaced with a string that makes the filename unique, and this modified string is returned via the template argument. Because template is modified, it must be specified as a character array, rather than as a string constant. The mkstemp() function creates the file with read and write permissions for the file owner (and no permissions for other users), and opens it with the O_EXCL flag, guaranteeing that the caller has exclusive access to the file.
+```
+int fd;
+char template[] = "/tmp/somestringXXXXXX";
+fd = mkstemp(template);
+if (fd == -1)
+	errExit("mkstemp");
+printf("Generated filename was: %s\n", template);
+unlink(template); /* Name disappears immediately, but the file is removed only after close() */
+/* Use file I/O system calls - read(), write(), and so on */
+if (close(fd) == -1)
+	errExit("close");
+```
+
+```
+#include <stdio.h>
+
+FILE *tmpfile(void);
+		Returns file pointer on success, or NULL on error
+```
+The tmpfile() function creates a uniquely named temporary file that is opened for reading and writing. (The file is opened with the O_EXCL flag to guard against the unlikely possibility that another process has already created a file with the same name.) On success, tmpfile() returns a file stream that can be used with the stdio library functions. The temporary file is automatically deleted when it is closed. To do this,
+tmpfile() makes an internal call to unlink() to remove the filename immediately after opening the file.
 #### atomicity
-All system calls are executed atomically. By this, we mean that
+Atomicity in C means an operation is indivisible and runs completely without interruption or observation of intermediate states. All system calls are executed atomically. By this, we mean that
 the kernel guarantees that all of the steps in a system call are completed as a single operation, without being interrupted by another process or thread. It allows us to avoid race conditions. A race condition is a situation where the result produced by two processes (or
 threads) operating on shared resources depends in an unexpected way on the relative order in which the processes gain access to the CPU.
 #### race condition
 Race condition is a concurrency anomaly that occurs when multiple threads or processes concurrently read and write to a shared memory location without proper synchronization. The anomaly manifests because the system's final state depends entirely on the non-deterministic sequence, timing, or interleaving of CPU execution threads. High-level programming operations (such as `x++`) are compiled into multiple hardware instructions—typically `read`, `modify`, and `write`—which can be preempted halfway through by another thread accessing the same location. This leads to insidious bugs such as data corruption, memory leaks, and unpredictable system state that are notoriously difficult to consistently reproduce and debug. 
 
+#### summary:
+In order to perform I/O on a regular file, we must first obtain a file descriptor using open(). I/O is then performed using read() and write(). After performing all I/O, we should free the file descriptor and its associated resources using close(). These system calls can be used to perform I/O on all types of files. The fact that all file types and device drivers implement the same I/O interface allows for universality of I/O, meaning that a program can typically be used with any type of file without requiring code that is specific to the file type. For each open file, the kernel maintains a file offset, which determines the location at which the next read or write will occur. The file offset is implicitly updated by reads and writes. Using lseek(), we can explicitly reposition the file offset to any location within the file or past the end of the file. Writing data at a position beyond the previous end of the file creates a hole in the file. Reads from a file hole return bytes containing zeros. The ioctl() system call is a catchall for device and file operations that don’t fit into the standard file I/O model.
