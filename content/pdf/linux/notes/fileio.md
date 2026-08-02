@@ -68,3 +68,44 @@ can be read to obtain information about the file descriptors of any process on
 the system. There is one file in this directory for each of the process’s open file
 descriptors, with a name that matches the number of the descriptor. The pos
 field in this file shows the current file offset. The flags field is an octal number that shows the file access mode flags and open file status flags. (To decode this number, we need to look at the numeric values of these flags in the C library header files.)
+
+#### read
+read() doesn’t place a terminating null byte at the end of the string. A moment’s reflection leads us to realize that this must be so, since read() can be used to read any sequence of bytes from a file. In some cases, this input might be text, but in other cases, the input might be binary integers or C structures in binary form. There is no way for read() to tell the difference, and so it can’t attend to the C convention of null terminating character strings. If a terminating null byte is required at the end of the input buffer, we must put it there explicitly.
+
+#### lseek
+```
+off_t lseek(int fd, off_t offset, int whence);
+					returns new file offset if successful, or –1 on error
+```
+For each open file, the kernel records a file offset, sometimes also called the read-
+write offset or pointer. This is the location in the file at which the next read() or write()
+will commence. The file offset is expressed as an ordinal byte position relative to
+the start of the file. The first byte of the file is at offset 0. The file offset is set to point to the start of the file when the file is opened and is automatically adjusted by each subsequent call to read() or write() so that it points to the next byte of the file after the byte(s) just read or written.
+```
+curr = lseek(fd, 0, SEEK_CUR);
+lseek(fd, 0, SEEK_SET); /* Start of file */
+lseek(fd, 0, SEEK_END); /* Next byte after the end of the file */
+lseek(fd, -1, SEEK_END); /* Last byte of file */
+lseek(fd, -10, SEEK_CUR); /* Ten bytes prior to current location */
+lseek(fd, 10000, SEEK_END); /* 10001 bytes past last byte of file */
+```
+
+We can’t apply lseek() to all types of files. Applying lseek() to a pipe, FIFO,
+socket, or terminal is not permitted; lseek() fails, with errno set to ESPIPE. On the
+other hand, it is possible to apply lseek() to devices where it is sensible to do so. For
+example, it is possible to seek to a specified location on a disk or tape device
+`Unseekable file descriptors` are stream-type files (such as pipes and sockets) they do not use the offset because the data in the file is not randomly accessible. 
+
+#### ioctl
+The ioctl() system call is a general-purpose mechanism for performing file and
+device operations that fall outside the universal I/O model.
+```
+int ioctl(int fd, int request, ... /* argp */);
+		Value returned on success depends on request, or –1 on error
+```
+The `fd` argument is an open file descriptor for the device or file upon which the
+control operation specified by `request` is to be performed. Device-specific header
+files define constants that can be passed in the `request` argument.
+
+#### summary:
+In order to perform I/O on a regular file, we must first obtain a file descriptor using open(). I/O is then performed using read() and write(). After performing all I/O, we should free the file descriptor and its associated resources using close(). These system calls can be used to perform I/O on all types of files. The fact that all file types and device drivers implement the same I/O interface allows for universality of I/O, meaning that a program can typically be used with any type of file without requiring code that is specific to the file type. For each open file, the kernel maintains a file offset, which determines the location at which the next read or write will occur. The file offset is implicitly updated by reads and writes. Using lseek(), we can explicitly reposition the file offset to any location within the file or past the end of the file. Writing data at a position beyond the previous end of the file creates a hole in the file. Reads from a file hole return bytes containing zeros. The ioctl() system call is a catchall for device and file operations that don’t fit into the standard file I/O model.
