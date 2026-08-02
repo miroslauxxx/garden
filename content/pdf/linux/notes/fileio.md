@@ -1,14 +1,11 @@
-`fd = open(pathname, flags, mode)` opens the file identified by pathname, returning a file descriptor used to refer to the open file in subsequent calls. If the file doesn’t exist, open() may create it, depending on the settings of the flags bit-mask argument. The flags argument also specifies whether the file is to be opened for reading, writing, or both. The mode argument specifies the permissions to be placed on the file if it is created by this call. If the open() call is not
-being used to create a file, this argument is ignored and can be 
+`fd = open(pathname, flags, mode)` opens the file identified by `pathname`, returning a `file descriptor` used to refer to the open file in subsequent calls. If the file doesn’t exist, open() may create it, depending on the settings of the flags bit-mask argument. The `flags` argument also specifies whether the file is to be opened for reading, writing, or both. The `mode` argument specifies the permissions to be placed on the file if it is created by this call. If the open() call is not being used to create a file, this argument is ignored and can be 
 omitted.
 ___
-`numread = read(fd, buffer, count)` reads at most count bytes from the open file referred to by fd and stores them in buffer. The read() call returns the number of bytes actually read. If no further bytes could be read (i.e., end-of-file was encountered), read() returns 0.
+`numread = read(fd, buffer, count)` reads at most `count` bytes from the open file referred to by `fd` and stores them in `buffer`. The read() call returns the number of bytes actually read. If no further bytes could be read (i.e., end-of-file was encountered), read() returns 0.
 ___
-`numwritten = write(fd, buffer, count)` writes up to count bytes from buffer to the open file referred to by fd. The write() call returns the number of bytes actually written, which may be less than count.
+`numwritten = write(fd, buffer, count)` writes up to `count` bytes from `buffer` to the open file referred to by `fd`. The write() call returns the number of bytes actually written, which may be less than count.
 ___
 `status = close(fd)` is called after all I/O has been completed, in order to release the file descriptor fd and its associated kernel resources.
-
-
 #### open
 Permissions actually placed on a new file depend not just on the mode argument, but also on the process umask and the (optionally present) default access control list of the parent directory. 
 ```
@@ -25,8 +22,6 @@ fd = open("w.log", O_WRONLY | O_CREAT | O_TRUNC | O_APPEND, S_IRUSR | S_IWUSR);
 if (fd == -1)
 	errExit("open")
 ```
-
-
 ___
 ```
 Flag           <------>      Purpose
@@ -68,7 +63,6 @@ O_NONBLOCK                   Open in nonblocking mode
 O_SYNC                       Make file writes synchronous
 ``` 
 ___
-
 Since kernel 2.6.22, the Linux-specific files in the directory /proc/PID/fdinfo
 can be read to obtain information about the file descriptors of any process on
 the system. There is one file in this directory for each of the process’s open file
