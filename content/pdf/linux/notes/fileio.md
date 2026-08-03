@@ -128,6 +128,54 @@ struct iovec {
 	size_t iov_len; /* Number of bytes to transfer to/from buffer */
 };
 ```
+
+```
+#include <sys/stat.h>
+#include <sys/uio.h>
+#include <fcntl.h>
+#include "tlpi_hdr.h"
+
+int main(int argc, char *argv[])
+{
+	int     fd;
+	struct  iovec iov[3];
+	struct  stat myStruct; /* First buffer */
+	int     x;             /* Second buffer */
+	#define STR_SIZE 100
+	char    str[STR_SIZE]; /* Third buffer */
+	ssize_t numRead, totRequired;
+
+	if (argc != 2 || strcmp(argv[1], "--help") == 0)
+		usageErr("%s file\n", argv[0]);
+	fd = open(argv[1], O_RDONLY);
+	if (fd == -1)
+		errExit("open");
+		
+	totRequired = 0;
+	
+	iov[0].iov_base = &myStruct;
+	iov[0].iov_len = sizeof(struct stat);
+	totRequired += iov[0].iov_len;
+	
+	iov[1].iov_base = &x;
+	iov[1].iov_len = sizeof(x);
+	totRequired += iov[1].iov_len;
+	
+	iov[2].iov_base = str;
+	iov[2].iov_len = STR_SIZE;
+	totRequired += iov[2].iov_len;
+	
+	numRead = readv(fd, iov, 3);
+	if (numRead == -1)
+		errExit("readv");
+	
+	if (numRead < totRequired)
+		printf("Read fewer bytes than requested\n");
+		printf("total bytes requested: %ld; bytes read: %ld\n", (long) totRequired, (long) numRead);
+	
+	exit(EXIT_SUCCESS);
+}
+```
 #### preadv / pwritev
 
 ```
@@ -182,11 +230,9 @@ FILE *tmpfile(void);
 The tmpfile() function creates a uniquely named temporary file that is opened for reading and writing. (The file is opened with the O_EXCL flag to guard against the unlikely possibility that another process has already created a file with the same name.) On success, tmpfile() returns a file stream that can be used with the stdio library functions. The temporary file is automatically deleted when it is closed. To do this,
 tmpfile() makes an internal call to unlink() to remove the filename immediately after opening the file.
 #### atomicity
-Atomicity in C means an operation is indivisible and runs completely without interruption or observation of intermediate states. All system calls are executed atomically. By this, we mean that
-the kernel guarantees that all of the steps in a system call are completed as a single operation, without being interrupted by another process or thread. It allows us to avoid race conditions. A race condition is a situation where the result produced by two processes (or
-threads) operating on shared resources depends in an unexpected way on the relative order in which the processes gain access to the CPU.
+Atomicity in C means an operation is indivisible and runs completely without interruption or exposure of intermediate states. All system calls are executed atomically. By this, we mean that the kernel guarantees that all of the steps in a system call are completed as a single operation, without being interrupted by another process or thread. It allows us to avoid race conditions. A race condition is a situation where the result produced by two processes (or threads) operating on shared resources depends in an unexpected way on the relative order in which the processes gain access to the CPU.
+\*Indivisible means impossible to divide, separate, or break into smaller parts
 #### race condition
-Race condition is a concurrency anomaly that occurs when multiple threads or processes concurrently read and write to a shared memory location without proper synchronization. The anomaly manifests because the system's final state depends entirely on the non-deterministic sequence, timing, or interleaving of CPU execution threads. High-level programming operations (such as `x++`) are compiled into multiple hardware instructions—typically `read`, `modify`, and `write`—which can be preempted halfway through by another thread accessing the same location. This leads to insidious bugs such as data corruption, memory leaks, and unpredictable system state that are notoriously difficult to consistently reproduce and debug. 
-
+Race condition is a concurrency bug that occurs when multiple threads or processes read and write to the same memory location at the same time without proper synchronization. This issue happens because the final state depends entirely on the unpredictable timing and order of CPU threads. High-level programming code (such as `x++`) is compiled into multiple hardware steps—typically read, modify, and write - which can be interrupted halfway through by another thread accessing the same location. This leads to sneaky bugs like data corruption and unpredictable behavior that are famously hard to reproduce and fix.
 #### summary:
 In order to perform I/O on a regular file, we must first obtain a file descriptor using open(). I/O is then performed using read() and write(). After performing all I/O, we should free the file descriptor and its associated resources using close(). These system calls can be used to perform I/O on all types of files. The fact that all file types and device drivers implement the same I/O interface allows for universality of I/O, meaning that a program can typically be used with any type of file without requiring code that is specific to the file type. For each open file, the kernel maintains a file offset, which determines the location at which the next read or write will occur. The file offset is implicitly updated by reads and writes. Using lseek(), we can explicitly reposition the file offset to any location within the file or past the end of the file. Writing data at a position beyond the previous end of the file creates a hole in the file. Reads from a file hole return bytes containing zeros. The ioctl() system call is a catchall for device and file operations that don’t fit into the standard file I/O model.
