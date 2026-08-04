@@ -25,20 +25,22 @@
 	-  The system-wide table of open file descriptions. 
 	-  The file system i-node table.
 
+![[file_tables.png]]
+
+
+`
 	For each process, the kernel maintains a table of open file descriptors. Each entry in this table records information about a single file descriptor, including:
 	-  Set of flags controlling the operation of the file descriptor 
 	-  Reference to the open file description.
-
 	The kernel maintains a system-wide table of all open file descriptions. (This table is sometimes referred to as the open file table, and its entries are sometimes called open file handles.) An open file description stores all information relating to an open file, including:
 	- the current file offset (as updated by read() and write(), or explicitly modified using lseek());
 	- status flags specified when opening the file (i.e., the flags argument to open());
 	- the file access mode (read-only, write-only, or read-write, as specified in open());
 	- settings relating to signal-driven I/O 
 	- reference to the i-node object for this file.
-
+	``
 	Each file system has a table of i-nodes for all files residing in the file system:
 	- file type (e.g., regular file, socket, or FIFO) and permissions;
 	- pointer to a list of locks held on this file;
 	- various properties of the file, including its size and timestamps relating to different types of file operations.
-
-	descriptor is integer applied for opened file, descriptor is content that can be read or 
+	Descriptor is integer applied for opened file, description is content that can be read or modified inside file.  
