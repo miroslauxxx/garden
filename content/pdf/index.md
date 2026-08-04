@@ -11,5 +11,5 @@ ____
 ___
 [en.chardway](en.chardway.pdf) Learn C the Hard Way (Zed A. Shaw 2016)
 ___
-[Practical Unix & Internet Security, 3rd Edition]()
+[en.unixsec](en.unixsec.pdf) Practical Unix & Internet Security, 3rd Edition (Simson Garfinkel, Alan Schwartz, Gene Spafford 2003)
 ___
