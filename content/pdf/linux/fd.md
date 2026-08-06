@@ -1,4 +1,4 @@
-- `File Descriptors` (FD) are non-negative integers `(from 0 to 1024)` that are associated with files that are opened. When we open an existing file or create a new one, the parent process forks a process, the child process inherits the file descriptors of the parent and kernel returns a file descriptor to the calling code. 
+- `File Descriptors` (FD) are non-negative integers that the kernel uses to identify the files accessed by a process. When we open an existing file or create a new one, the parent process forks a process, the child process inherits the file descriptors of the parent and kernel returns a file descriptor to the calling code. 
 
 	To the kernel, all open files are referred to by file descriptors, including those entities that aren't files per entity such as anonymous pipes and network sockets. 
 	- anonymous pipe is `|`
@@ -14,6 +14,24 @@
 	`2: STDERR_FILENO`.. :: 
 	standard **FD**'s that corresponds to `STDIN_FILENO`, `STDOUT_FILENO` and `STDERR_FILENO`  opened by default on behalf of shell when the program starts.
 
+```
+#define BUFFSIZE 4096
+int main(void)
+{
+	int n;
+	char buf[BUFFSIZE];
+	
+	while ((n = read(STDIN_FILENO, buf, BUFFSIZE)) > 0)
+	{	
+		if (write(STDOUT_FILENO, buf, n) != n)
+			err_sys("write error");
+	}
+	if (n < 0)
+		err_sys("read error");
+	exit(0);
+}
+```
+
 	FD's are allocated in the sequential order, meaning the lowest possible unallocated integer value.
 
 	FD's for a particular process can be seen in `/proc/[pid]/fd` (on Unix based systems).
@@ -25,6 +43,7 @@
 	-  The system-wide table of open file descriptions. 
 	-  The file system i-node table.
 
+file sharing tables:
 ![[file_tables.png]]
 
 

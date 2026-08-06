@@ -1,3 +1,10 @@
+Most file I/O on a UNIX system can be performed using only five functions: open, read, write, lseek, and close.
+
+```
+od -A x -t x1z -v main.c // print in hex format
+
+```
+
 `fd = open(pathname, flags, mode)` opens the file identified by `pathname`, returning a `file descriptor` used to refer to the open file in subsequent calls. If the file doesn’t exist, open() may create it, depending on the settings of the flags bit-mask argument. The `flags` argument also specifies whether the file is to be opened for reading, writing, or both. The `mode` argument specifies the permissions to be placed on the file if it is created by this call. If the open() call is not being used to create a file, this argument is ignored and can be 
 omitted.
 ___
@@ -67,6 +74,26 @@ ___
 Since kernel 2.6.22, the Linux-specific files in the directory /proc/PID/fdinfo can be read to obtain information about the file descriptors of any process on the system. There is one file in this directory for each of the process’s open file descriptors, with a name that matches the number of the descriptor. The pos field in this file shows the current file offset. The flags field is an octal number that shows the file access mode flags and open file status flags. (To decode this number, we need to look at the numeric values of these flags in the C library header files.)
 #### read
 read() doesn’t place a terminating null byte at the end of the string. A moment’s reflection leads us to realize that this must be so, since read() can be used to read any sequence of bytes from a file. In some cases, this input might be text, but in other cases, the input might be binary integers or C structures in binary form. There is no way for read() to tell the difference, and so it can’t attend to the C convention of null terminating character strings. If a terminating null byte is required at the end of the input buffer, we must put it there explicitly.
+
+```
+// copy input to output
+#define BUFFSIZE 4096
+
+int main(void)
+{
+	int n;
+	char buf[BUFFSIZE];
+	
+	while ((n = read(STDIN_FILENO, buf, BUFFSIZE)) > 0)
+	{
+		if (write(STDOUT_FILENO, buf, n) != n)
+			err_sys("write error");
+	}
+	if (n < 0)
+		err_sys("read error");
+	exit(0);
+}
+```
 #### lseek
 ```
 #include <unistd.h>
@@ -229,6 +256,26 @@ FILE *tmpfile(void);
 ```
 The tmpfile() function creates a uniquely named temporary file that is opened for reading and writing. (The file is opened with the O_EXCL flag to guard against the unlikely possibility that another process has already created a file with the same name.) On success, tmpfile() returns a file stream that can be used with the stdio library functions. The temporary file is automatically deleted when it is closed. To do this,
 tmpfile() makes an internal call to unlink() to remove the filename immediately after opening the file.
+
+#### ls program example
+```
+int	main(int argc, char **argv)
+{
+	DIR				*dp;
+	struct dirent	*dirp;
+
+	if (argc != 2)
+		return(printf("usage: ls PATH"));
+
+	if((dp = opendir(argv[1])) == NULL)
+		return(printf("error occured while opening."));
+	while((dirp = readdir(dp)) != NULL)
+		printf("%s\n", dirp->d_name);
+	
+	closedir(dp);
+	exit(0);
+}
+```
 #### atomicity
 Atomicity in C means an operation is indivisible and runs completely without interruption or exposure of intermediate states. All system calls are executed atomically. By this, we mean that the kernel guarantees that all of the steps in a system call are completed as a single operation, without being interrupted by another process or thread. It allows us to avoid race conditions. A race condition is a situation where the result produced by two processes (or threads) operating on shared resources depends in an unexpected way on the relative order in which the processes gain access to the CPU.
 \*Indivisible means impossible to divide, separate, or break into smaller parts
