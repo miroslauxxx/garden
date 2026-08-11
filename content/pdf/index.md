@@ -15,3 +15,6 @@ ___
 ___
 [en.kernelmod](en.kernelmod.pdf) The Linux Kernel Module Programming Guide (Peter Jay Salzman, Michael Burian, Ori Pomerantz, Bob Mottram, Jim Huang 2026) 
 ___
+[en.unixenv](en.unixenv.pdf)  Advanced Programming in the UNIX Environment Third Edition 2013
+___
+[ru.unixenv](ru.unixenv.pdf) Advanced Programming in the UNIX Environment Third Edition 2013
