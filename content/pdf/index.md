@@ -13,3 +13,5 @@ ___
 ___
 [en.unixsec](en.unixsec.pdf) Practical Unix & Internet Security, 3rd Edition (Simson Garfinkel, Alan Schwartz, Gene Spafford 2003)
 ___
+[en.kernelmod](en.kernelmod.pdf) The Linux Kernel Module Programming Guide (Peter Jay Salzman, Michael Burian, Ori Pomerantz, Bob Mottram, Jim Huang 2026) 
+___
