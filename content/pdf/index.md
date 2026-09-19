@@ -18,7 +18,9 @@ ___
 [en.unixenv](en.unixenv.pdf)  Advanced Programming in the UNIX Environment Third Edition 2013
 ___
 [ru.unixenv](ru.unixenv.pdf) Advanced Programming in the UNIX Environment Third Edition 2013
-__
+___
 [en.internals.pdf](https://rogrx.cc/pdf/linux/en.internals.pdf) Linux Internals: to the power of -1 (Simone Demblon Sebastian Spitzner)
-__
-[ssh-mastery.pdf](ssh-mastery.pdf)SSH-Mastery Second Edition by  Michael W. Lucas
+___
+[ssh-mastery.pdf](ssh-mastery.pdf) SSH-Mastery Second Edition by  Michael W. Lucas
+___
+[sfas.pdf](sfas.pdf) Search for a solution
