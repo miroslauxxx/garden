@@ -24,3 +24,5 @@ ___
 [ssh-mastery.pdf](ssh-mastery.pdf) SSH-Mastery Second Edition by  Michael W. Lucas
 ___
 [sfas.pdf](sfas.pdf) Search for a solution
+__
+[en.intelx86.pdf](en.intelx86.pdf) The art of intel x86 assembly 
