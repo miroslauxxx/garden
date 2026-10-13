@@ -26,3 +26,5 @@ ___
 [sfas.pdf](sfas.pdf) Search for a solution
 __
 [en.intelx86.pdf](en.intelx86.pdf) The art of intel x86 assembly 
+__
+[Secure Programming for Linux and Unix HOWTO](https://dwheeler.com/secure-programs/Secure-Programs-HOWTO.html) Secure Programming for Linux and Unix HOWTO David A. Wheeler
