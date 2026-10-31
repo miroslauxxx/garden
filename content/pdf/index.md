@@ -24,7 +24,10 @@ ___
 [ssh-mastery.pdf](ssh-mastery.pdf) SSH-Mastery Second Edition by  Michael W. Lucas
 ___
 [sfas.pdf](sfas.pdf) Search for a solution
-__
+___
 [en.intelx86.pdf](en.intelx86.pdf) The art of intel x86 assembly 
-__
+___
 [Secure Programming for Linux and Unix HOWTO](https://dwheeler.com/secure-programs/Secure-Programs-HOWTO.html) Secure Programming for Linux and Unix HOWTO David A. Wheeler
+___
+[konkretnaya_matematika.pdf](konkretnaya_matematika.pdf) Konkretnaya Matematika Р. Грэхем, Д. Кнут, О. Паташник
+
