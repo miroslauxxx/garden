@@ -3,6 +3,7 @@ SCENARIO 1: OVERWRITING A LOCAL VARIABLE
 Concept: A stack-based buffer overflow where input overflows a character array and corrupts an adjacent control variable (e.g., an authentication flag) in stack memory.
 
 Vulnerable C Structure:
+```
 void function(void) {
 int authorized = 0;
 char buffer[64];
@@ -11,6 +12,7 @@ if (authorized != 0) {
 grant_access();
 }
 }
+```
 
 GDB Commands and Execution:
 
@@ -33,6 +35,7 @@ SCENARIO 2: OVERWRITING THE RETURN ADDRESS (RET2TEXT)
 Concept: Overflowing a buffer beyond its allocated space to overwrite the saved frame pointer and the saved instruction pointer (return address), redirecting execution flow to an existing function (e.g., a hidden win function).
 
 Vulnerable C Structure:
+```
 void win(void) {
 system("/bin/sh");
 }
@@ -40,6 +43,7 @@ void vuln(void) {
 char buffer[32];
 gets(buffer);
 }
+```
 
 GDB Commands and Execution:
 
@@ -62,10 +66,12 @@ SCENARIO 3: STACK SHELLCODE EXECUTION VIA NOP SLED
 Concept: Injecting shellcode into a local buffer and redirecting the instruction pointer back onto the stack to execute arbitrary machine instructions, assisted by a NOP sled to increase reliability.
 
 Vulnerable C Structure:
+```
 void vuln(void) {
 char buffer[128];
 strcpy(buffer, argv[1]);
 }
+```
 
 GDB Commands and Execution:
 
